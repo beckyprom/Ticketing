@@ -17,7 +17,9 @@ const EventPopup = ({ event, onClose }) => {
           const ticket = response.data.find((ticket) => ticket.ticket_type === ticketType);
           if (ticket) {
             setTicketPrice(ticket.price);
+            console.log('Ticket price:', ticket.price);
           } else {
+            alert('ticket not found')
             setTicketPrice(0);
           }
         })
@@ -49,7 +51,7 @@ const EventPopup = ({ event, onClose }) => {
       const response = await fetch(url, {
         body: `amount=${totalAmount}&msisdn=${mpesaContact}&account_no=1180183034869`,
         headers: {
-          Apikey: apiKey,
+          // Apikey: apiKey,
           "Content-Type": "application/x-www-form-urlencoded",
         },
         method: "POST",
@@ -99,9 +101,9 @@ const EventPopup = ({ event, onClose }) => {
                       className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     >
                       <option value="">Select Ticket Type</option>
-                      <option value="VVIP">VVIP</option>
-                      <option value="VIP">VIP</option>
-                      <option value="Regular">Regular</option>
+                      <option value="vvip">VVIP</option>
+                      <option value="vip">VIP</option>
+                      <option value="regular">Regular</option>
                     </select>
                   </label>
                 </div>

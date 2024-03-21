@@ -41,13 +41,15 @@ function Ticketspage() {
 
   return (
     <div className="container mx-auto mt-14 mb-14 p-4">
-      <h1 className="text-2xl font-bold text-gray-800">Set Tickets for {event_name}</h1>
-     <form onSubmit={handleTickets}>
-        <div className="mb-4 md:col-span-1">
-          <label className="block">Ticket Type</label>
-          <select
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Set Tickets for {event_name}</h1>
+     <form onSubmit={handleTickets} className="max-w-md mx-auto">
+     <h1 className="text-3xl font-bold text-gray-800 mb-6">Set Tickets for {event_name}</h1>
+        <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2">Ticket Type</label> 
+           <select
             value={ticket_type}
             onChange={e => setTicketType(e.target.value)}
+            className="w-full bg-white border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
             required
           >
             <option value="">Select Ticket Type</option>
@@ -56,28 +58,28 @@ function Ticketspage() {
             <option value="regular">Regular</option>
           </select>
         </div>
-        <div className="mb-4 md:col-span-1">
-          <label className="block">Quantity</label>
-          <input
+        <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2">Quantity</label>          <input
             type='number'
             placeholder='Quantity'
             value={quantity}
             onChange={e => setQuantity(e.target.value)}
+            className="w-full bg-white border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
             required
           />
         </div>
-        <div className="mb-4 md:col-span-1">
-          <label className="block">Price</label>
-          <input
+        <div className="mb-6">
+        <label className="block text-gray-700 text-sm font-bold mb-2">Price</label>          <input
             type='number'
             placeholder='Enter ticket price'
             value={price}
             onChange={e => setPrice(e.target.value)}
+            className="w-full bg-white border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
             required
           />
         </div>
-        <div className="col-span-2 flex justify-center">
-          <button type='submit' className="btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-96">Create Ticket</button>
+        <div className="flex justify-center"> 
+        <button type='submit' className="btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-96">Create Ticket</button>
         </div>
       </form>
     </div>
