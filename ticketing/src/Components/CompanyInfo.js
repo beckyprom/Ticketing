@@ -18,12 +18,12 @@ function CompanyInfo() {
           },
         };
         // Fetch user's company data
-        const response = await axios.get('/company', config);
+        const response = await axios.get('https://event-ticketing-backend.onrender.com/company', config);
         setUserData(response.data);
         console.log(response.data);
 
         // Fetch company events
-        const eventsResponse = await axios.get('/companyevents', config);
+        const eventsResponse = await axios.get('https://event-ticketing-backend.onrender.com/companyevents', config);
 
         const sortedEvents = eventsResponse.data.sort((a, b) => {
           return new Date(b.start_date) - new Date(a.start_date);
