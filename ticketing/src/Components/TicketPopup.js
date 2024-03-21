@@ -1,17 +1,18 @@
-
+// TicketPopup.js
 import React, { useState } from 'react';
+
 
 const TicketPopup = ({ eventName, ticketType, numTickets, totalAmount, onClose, onConfirmSuccess, onConfirmFailure }) => {
   const [mpesaNumber, setMpesaNumber] = useState('');
-  const userId = localStorage.getItem('user_id'); // Get the user ID from local storage
 
   const handleConfirm = () => {
+    // Prepare the request body
     const requestBody = new URLSearchParams();
-    requestBody.append('amount', totalAmount.toString());
+    requestBody.append('amount', totalAmount.toString()); // Convert totalAmount to string
     requestBody.append('msisdn', mpesaNumber);
     requestBody.append('account_no', 'Your account number or identifier');
-    requestBody.append('user_id', userId); // Include the user ID in the request body
 
+    // Send the request to initiate the payment
     const apiKey = 'Yv94ZI4z93w';
 
     fetch('https://tinypesa.com/api/v1/express/initialize', {
@@ -24,14 +25,18 @@ const TicketPopup = ({ eventName, ticketType, numTickets, totalAmount, onClose, 
     })
     .then(response => response.json())
     .then(data => {
+      // Check the response for success or failure
       if (data.success) {
+        // Payment initiated successfully, you can close the popup and show a success message
         onConfirmSuccess(); 
       } else {
+        // Payment failed, you can show an error message
         onConfirmFailure(); 
       }
     })
     .catch(error => {
       console.error('Error initiating payment:', error);
+      // Handle any errors that occur during the request
       onConfirmFailure(); 
     });
   };

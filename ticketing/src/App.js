@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
 import Events from './Components/Events'; 
@@ -18,6 +17,7 @@ import Support from './Components/Support';
 import UpcomingEvents from './Components/UpcomingEvents';
 import UserDashboard from './Components/UserDashboard';
 import Ticketspage from './Components/Ticketspage';
+import TicketPopup from './Components/TicketPopup';
 
 const App = () => {
   return (
@@ -41,6 +41,7 @@ const App = () => {
           <Route path="/upcoming-events" element={<UpcomingEvents />} />
           <Route path="/userdashboard" element={<UserDashboard />} />
           <Route path={`settickets/:event_name`} element={<Ticketspage />} />
+          <Route path="/ticketpopup" element={<TicketPopup />} />
         </Routes>
       </div>
 

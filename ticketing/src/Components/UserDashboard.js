@@ -1,10 +1,9 @@
-// UserDashboard.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; // Import useState
 import axios from 'axios';
-import UsersNavbar from './UsersNavbar';
+import UsersNavbar from './UsersNavbar'; // Import the UsersNavbar component
 
 const UserDashboard = () => {
-    const [orderHistory, setOrderHistory] = useState([]);
+    const [orderHistory, setOrderHistory] = useState([]); // Use state to manage order history
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +27,7 @@ const UserDashboard = () => {
 
     return (
         <div>
-            <UsersNavbar />
+            <UsersNavbar /> {/* Render the UsersNavbar component */}
             <div className="container mx-auto p-4">
                 <h1 className="font-bold text-2xl mb-14 mt-14">Purchase History</h1>
                 <div>
@@ -38,7 +37,6 @@ const UserDashboard = () => {
                             <p className="mt-2"><strong>Order Date:</strong> {order.order_date}</p>
                             <p className="mt-2"><strong>Total Price:</strong> {order.total_price}</p>
                             <p className="mt-2"><strong>Quantity:</strong> {order.quantity}</p>
-                            <p className="mt-2"><strong>User ID:</strong> {order.user_id}</p> {/* Display the user ID */}
                         </div>
                     ))}
                 </div>

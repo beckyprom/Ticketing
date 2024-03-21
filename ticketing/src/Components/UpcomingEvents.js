@@ -3,13 +3,11 @@ import Footer from './Footer';
 import EventPopup from './EventPopup';
 import axios from 'axios';
 import evnImage from '../images/home.jpg';
-import Order from './Order';
 import UsersNavbar from './UsersNavbar'; // Import UsersNavbar
 
 const UpcomingEvents = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [visibleDescription, setVisibleDescription] = useState({});
   const [selectedEvent, setSelectedEvent] = useState(null); // State to store the selected event
   const [event, setEvents] = useState([]);
 
@@ -33,19 +31,6 @@ const UpcomingEvents = () => {
       event.event_name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredEvents(filtered);
-  };
-
-  const handleReset = () => {
-    setSearchQuery('');
-    setFilteredEvents([]);
-    setVisibleDescription({});
-  };
-
-  const toggleDescription = id => {
-    setVisibleDescription(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
   };
 
   // Function to handle when "View Event" button is clicked
@@ -84,9 +69,9 @@ const UpcomingEvents = () => {
             <img className="w-80 h-80 " src={event.event_image || evnImage} alt={event.event_name} />
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2  text-center">{event.event_name.toUpperCase()}</div> {/* Changed text color to white */}
-              {visibleDescription[event.id] && (
+              {/* {visibleDescription[event.id] && (
                 <p className="text-white text-base">{event.description}</p>
-              )}
+              )} */}
             </div>
             <div className="px-6 pt-4 pb-2 text-center">
               <button

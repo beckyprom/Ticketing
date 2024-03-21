@@ -3,7 +3,6 @@ import Footer from './Footer';
 import EventPopup from './EventPopup';
 import axios from 'axios';
 import evnImage from '../images/home.jpg';
-import Order from './Order';
 import Navbar from './Navbar'; // Import the Navbar component
 
 const Events = () => {
