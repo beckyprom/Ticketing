@@ -8,11 +8,9 @@ import Navbar from './Navbar'; // Import the Navbar component
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [visibleDescription, setVisibleDescription] = useState({});
   const [selectedEvent, setSelectedEvent] = useState(null); // State to store the selected event
   const [event, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,8 +20,7 @@ const Events = () => {
         setEvents(response.data);
         console.log(response.data);
         setLoading(false);
-        
-        } catch(error) {
+      } catch(error) {
         console.log(error);
         setLoading(false);
       }
@@ -38,19 +35,6 @@ const Events = () => {
     );
     setFilteredEvents(filtered);
   };
-
-  // const handleReset = () => {
-  //   setSearchQuery('');
-  //   setFilteredEvents([]);
-  //   setVisibleDescription({});
-  // };
-
-  // const toggleDescription = id => {
-  //   setVisibleDescription(prev => ({
-  //     ...prev,
-  //     [id]: !prev[id]
-  //   }));
-  // };
 
   // Function to handle when "View Event" button is clicked
   const handleViewEvent = event => {
@@ -81,19 +65,14 @@ const Events = () => {
             Search
           </button>
         </div>
-                {loading ? (
+        {loading ? (
           <p>Loading events data...</p>
         ) : (
           (filteredEvents.length > 0 ? filteredEvents : event).map(event => (
             <div key={event.id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white text-black">
               <img className="w-80 h-80 " src={event.event_image || evnImage} alt={event.event_name} />
               <div className="px-6 py-4">
-
                 <div className="font-bold text-xl mb-2  text-center">{event.event_name}</div> {/* Changed text color to white */}
-
-                {visibleDescription[event.id] && (
-                  <p className="text-white text-base">{event.description}</p>
-                )}
               </div>
               <div className="px-6 pt-4 pb-2 text-center">
                 <button
@@ -104,17 +83,12 @@ const Events = () => {
                 </button>
               </div>
             </div>
-
           ))
         )}
-          
-          {selectedEvent && (
-            <EventPopup event={selectedEvent} onClose={handleClosePopup} />
-          )}
-          </div>
-
-
-    
+        {selectedEvent && (
+          <EventPopup event={selectedEvent} onClose={handleClosePopup} />
+        )}
+      </div>
       <Footer />
     </>
   );
